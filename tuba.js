@@ -34,8 +34,6 @@ var acresBox = document.forms[0].acres;
 function verifyAcres() {
     // testFormCompleteness();
 
-    var validity = true;
-    var messageText = "";
     try {
         if (!(acresBox.value > 0)) {
             throw "Please enter a number of acres geater than 0.";
@@ -57,29 +55,34 @@ function verifyAcres() {
 
 /* verify at least one crops checkbox is checked */
 function verifyCrops() {
+  
     try{ for (var i = 0; i < 7; i++) {
         if
-        (cropsFieldset.getElementsByTagName("input")[i]. checked) { cropsComplete = true; messageElement.innerHTML = ""; 
+        (cropsFieldset.getElementsByTagName("input")[i]. checked) { 
+        cropsComplete = true; 
+        messageElement.innerHTML = ""; 
         // clear previous message or recommendation
-        testFormCompleteness(); i=8;
-        } if (i === 0) {
-        throw "Please select at least one crop.";
-           }
-        
+        testFormCompleteness(); i = 8;
+    }
+        } 
+        if (i === 7) {
+        throw "Please select at least one crop.";   
 }
     }
     catch(message) { 
-        cropsComplete = false; messageHeadElement.innerHTML = ""; 
+        cropsComplete = false;
+         messageHeadElement.innerHTML = ""; 
+         messageElement.innerHTML = message;
         // remove any former recommendation heading messageElement.innerHTML = message; // display error message
-        }
-        finally{
-            cropsComplete = validity;
-            messageElement.innerHTML = messageText;
-            messageHeadElement.innerHTML = "";
-            testFormCompleteness;
-        }
     }
-
+    //     finally{
+    //         cropsComplete = validity;
+    //         messageElement.innerHTML = messageText;
+    //         messageHeadElement.innerHTML = "";
+    //         testFormCompleteness();
+    // }
+        }
+    
 /* verify months text box entry is between 1 and 12 */
 function verifyMonths() {
     // testFormCompleteness();
